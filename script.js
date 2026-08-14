@@ -89,8 +89,15 @@ function initScrollAnimations() {
         observer.observe(pill);
     });
 
+    // Khas Untuk Kad Maklum Balas (Feedback Review)
+    const feedbackCards = document.querySelectorAll('.feedback-card');
+    feedbackCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(card);
+    });
+
     // Perhatikan elemen lain
-    const otherElements = document.querySelectorAll('.reveal:not(.bento-card):not(.service-pill)');
+    const otherElements = document.querySelectorAll('.reveal:not(.bento-card):not(.service-pill):not(.feedback-card)');
     otherElements.forEach(el => {
         observer.observe(el);
     });

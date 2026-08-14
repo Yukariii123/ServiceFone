@@ -168,6 +168,118 @@ header {
 .service-pill:hover { background: rgba(0, 242, 254, 0.1); border-color: var(--cyan-glow); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15);}
 
 /* =======================================================
+   MAKLUM BALAS (FEEDBACK REVIEWS) - BARU TAMBAH
+======================================================= */
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+.feedback-card {
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 35px 30px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.feedback-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--cyan-glow), var(--blue-glow));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+.feedback-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 242, 254, 0.1);
+}
+.feedback-card:hover::before {
+    transform: scaleX(1);
+}
+.feedback-card .stars {
+    color: #FFD700;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+.feedback-card .review-text {
+    font-style: italic;
+    color: #e2e2e2;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+.feedback-card .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+.reviewer .avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--cyan-glow), var(--blue-glow));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #000;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+}
+.reviewer .info h4 { font-size: 1rem; margin: 0; color: #fff; }
+.reviewer .info span { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+
+/* =======================================================
+   LOKASI (GOOGLE MAPS) - BARU TAMBAH
+======================================================= */
+.location-glass {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    background: rgba(20, 20, 25, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+.location-info {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.location-info h3 { font-size: 2.2rem; margin-bottom: 25px; line-height: 1.2; font-family: 'Outfit', sans-serif;}
+.location-info p { color: #ccc; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; font-size: 1rem; line-height: 1.5; }
+.location-info i { margin-top: 4px; font-size: 1.2rem; }
+
+.map-container { width: 100%; min-height: 400px; position: relative; }
+.map-container iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    /* CSS Khas untuk tukar Google Maps warna putih kepada warna Gelap (Dark Mode) / Neon */
+    filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%);
+    transition: all 0.5s ease;
+}
+.map-container iframe:hover { 
+    /* Terang kembali bila di'hover' jika user mahu lihat warna asal */
+    filter: invert(0%) hue-rotate(0deg) brightness(100%) contrast(100%); 
+}
+
+/* =======================================================
    BORANG WHATSAPP
 ======================================================= */
 .form-glass { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: rgba(20, 20, 25, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-glass); border-radius: 30px; padding: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
@@ -206,6 +318,12 @@ footer p { color: var(--text-muted); }
     .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
     .bento-large, .bento-wide, .bento-square { grid-column: span 1; grid-row: span 1; }
     
+    /* Responsive Baru: Maklum Balas & Lokasi */
+    .feedback-grid { grid-template-columns: 1fr; }
+    .location-glass { grid-template-columns: 1fr; border-radius: 20px; }
+    .location-info { padding: 30px 20px; }
+    .map-container { min-height: 300px; }
+
     .form-glass { grid-template-columns: 1fr; padding: 30px 20px; gap: 30px; border-radius: 20px; }
     .form-text h2 { font-size: 2rem; }
     .marquee-track img { height: 200px; width: 280px; }
